@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="contain">
+    <div class="left">
+      
+      <div class="left-container">
+        
+        <div class="conversion">
+          <h5>Convert USD to PKR</h5>
+          
+          <!----------------- USD to PKR Converter ----------------->
+          <form action="{{url_for('home')}}" method="post" novalidate>
+            <div class="input-group mb-3 customborder" id="abc">
+              <span class="input-group-text" id="basic-addon1">USD</span>
+              <input type="number" id="uInput" class="form-control" min="0" placeholder="Enter USDs.." name="usd_value" aria-label="Enter USDs" aria-describedby="basic-addon1" value={{input1}}>
+            </div>
+            <div class="input-group mb-3 customborder">
+              <span class="input-group-text" id="basic-addon2">PKR</span>
+              <input type="number" id="pInput" class="form-control" name="pkr_value" placeholder="Enter PKRs.." aria-describedby="basic-addon2" value={{output1}}>
+            </div>
+          </form>
+
+        </div>
+        <!-------------------- Important Statistics ------------->
+        <div class="stats">
+          <h5>Important Statistics</h5>
+          <table class="table table-bordered" style="border: 1px solid black;">
+            <tbody>
+              <tr><td>Live USD rate</td><td>{{ y[-1] }} PKR</td></tr>
+              <tr><td>@Time</td><td>{{ x[-1] }}</td></tr>
+              <tr><td>Current week's avg</td><td>{{weekAvg[1]}} PKR</td></tr>
+              <tr><td>Current month's avg</td><td>{{monthAvg[1]}} PKR</td></tr>
+              <tr><td>Last week's avg</td><td>{{weekAvg[0]}} PKR</td></tr>
+              <tr><td>Last month's avg</td><td>{{monthAvg[0]}} PKR</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+      
+    </div>
+
+    <div class="main_container">
+      
+      <div>
+        <h4>Live graph of USD to PKR exchange rate</h4>
+        <p>Graph is updated every minute.</p>
+        <a href="{{url_for('home')}}" type="button" class="btn btn-primary">Refresh Graph</a>
+      </div>
+      <!----------------- Live Chart canvas  ----------------->
+      <canvas id="usd2pkr_live_chart">
+      </canvas>
+    </div>
+    <script src="../static/app.js"></script>
+
+
+  <!---------------------------- Internal SCRIPT ------------------------->
+  <script>
+    const ctx = document.getElementById('usd2pkr_live_chart');
+    xvalues = {{x|safe}}
+    yvalues = {{y|safe}}
+    chart=  new Chart(ctx, {
+          type: 'line',
+          data: {
+        
+              labels: xvalues,
+              datasets: [{
+              label: 'USD to PKR value',
+              data: yvalues,
+              borderWidth: 2,
+              borderColor: 'black',
+              }]
+          },
+          options: {
+            animation: {
+              duration: 0
+              },
+            scales: {
+              y: {
+                beginAtZero: 0,
+                title: {text:"USD rate",display:true}
+                },
+              x: {
+              title: {text:"Minutes",display:true}
+            }
+            }
+          }
+      });
+  </script>
+
+{% endblock content %}

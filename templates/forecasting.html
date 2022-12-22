@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="model-container">
+    <h4>USD Price Predictor</h4>
+    <!-- <form action="{{url_for('forecasting')}}" method="post" novalidate> -->
+    <form>
+
+        <div class="prediction-form-container">
+            <div class="input-group mb-3 customborder prediction-form-input" style="margin:auto;">
+              <span class="input-group-text" id="basic-addon1">Buy</span>
+              <input type="date" class="form-control" id="start_date" name="start_date" min="2022-07-01" value="{{start_value}}">
+            </div>
+            <div class="input-group mb-3 customborder prediction-form-input" style="margin:auto;">
+                <span class="input-group-text" id="basic-addon1">Sell</span>
+                <input type="date" class="form-control" id="end_date" name="end_date" min="2022-07-01" value="{{end_value}}">
+            </div>
+            <div class="input-group mb-3 customborder prediction-form-input" style="margin:auto;">
+                <span class="input-group-text" id="basic-addon1">Investment</span>
+                <input type="number" class="form-control" id="investment" name="investmet" min="0" placeholder="Enter PKRs">
+            </div>
+            <div class="buttonsDiv"><div><button type="button" class="btn btn-primary" id="analyze_button">Analyze</button></div>
+            <div><button type="button" class="btn btn-primary" id="reset_button" >Reset</button></div>
+            </div>
+            <!-- style="margin-left: 3vh" -->
+        </div>
+    </form>
+    <div class="accordion" id="rangeList">
+
+    </div>
+    <hr>
+    <div class="mt-3"><button type="button" class="btn btn-primary" id="evaluate_pred">Evaluate Model</button></div>
+    <div class="mt-3" id="evaluation_div" style="max-width:60%;margin:auto;">
+
+    </div>
+</div>
+<script src="../static/app1.js"></script>
+
+
+{% endblock content %}

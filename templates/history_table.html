@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container1">
+    <h4 style="text-align: center;">USD & PKR exchange rate History</h4>
+    <table class="table table-sm table-bordered table-hover" style="border: 1px solid black;">
+      
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Weekday</th>
+                <th>USD to PKR</th>
+                <th>PKR to USD</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in history[::-1].iterrows() %}
+            <tr>
+                <td>{{ row[1].date }}</td>
+                <td>{{ row[1].day }}</td> 
+                <td>{{ row[1].usd_price }}</td> 
+                <td>{{row[1].pkr_price}}</td> 
+            </tr> 
+            {% endfor %}
+        </tbody>
+        
+    </table>
+       
+</div>
+{% endblock content %}

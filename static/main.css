@@ -1,0 +1,178 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background-color: #E6E5A3;
+}
+
+#mainNav {
+    height:7vh !important;
+    box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+    background-color: #557153;
+}
+
+.logo {
+    margin-left: 5%;
+    flex-grow: 9;
+}
+.logo a {
+    text-decoration: none;
+    font-size: 4vh;
+    color: antiquewhite;  
+}
+.logo a:hover{
+    text-decoration: none;
+    color: antiquewhite;
+}
+
+nav .navbar-nav li a{
+    color: white !important;
+}
+
+.contain {
+    height: 93vh;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.contain .left { 
+    width: 30%;
+    height: 100%;
+    background-color: #A9AF7E;
+}
+
+.left-container { 
+    height: 100%;
+    width: 100%;
+}
+
+
+
+.left-container { 
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+}
+.conversion { 
+    text-align: center;
+    font-size: 20px;
+}
+
+.conversion form {
+    width: 55%;
+    margin: auto;
+    margin-top: 20px
+}
+
+.stats {
+    height: 280px;
+    width: 80%;
+    margin: 0px auto;
+    
+}
+.stats h5{
+    text-align: center;
+}
+
+.stats table{
+    margin-top: 20px;
+    font-size: 15px;   
+}
+
+.stats td:nth-child(1) {
+    font-weight: 600;
+}
+
+.customborder {
+    border: 1px solid black;
+    border-radius: 6px;
+}
+
+.contain .main_container { 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 70%;
+    height: 90vh;
+    background-color: #E6E5A3;
+    text-align: center;
+
+}
+
+
+#usd2pkr_live_chart {
+    width: 90%;
+    height: 45vh;
+    margin: 0px auto;
+}
+
+
+
+.container1 { 
+    width: 70%;
+    margin: 30px auto;
+}
+
+.container1 table {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.container1 thead {
+    font-size: 18px;
+}
+.container1 tbody {
+    font-size: 18px;
+}
+
+.dropdown {
+    max-width: 70%;
+    margin:2vh auto auto auto;
+    text-align: right;
+}
+
+.chart_div {
+    height: 78vh;
+}
+#myChart {
+
+    width: 75%!important;
+    height: 100% !important;
+    margin: auto;
+
+}
+
+.chart_title { 
+    text-align: center;
+    margin: 1vh auto;
+}
+
+
+/* ------------------------Forecasting------------------------- */
+.model-container {
+    width: 70%;
+    text-align: center;
+    padding-top: 5vh;
+    margin: auto;
+}
+
+.prediction-form-container {
+    /* width: 60%; */
+    margin-top: 4vh;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.buttonsDiv {
+    width: 25%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    margin-bottom: 2vh;
+}
+.prediction-form-input {
+    max-width: 30%;
+    margin-right: 3%;
+}

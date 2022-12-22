@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!----------DropDown for selecting graph  ------------>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Select Graph
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="{{url_for('daily_chart')}}">Daily</a>
+        <a class="dropdown-item" href="{{url_for('weekly_chart')}}">Weekly</a>
+        <a class="dropdown-item" href="{{url_for('monthly_chart')}}">Monthly</a>
+        </div>
+    </div>
+
+    <div class="chart_title">
+        <h4>{{text | safe}}</h4>
+    </div>
+
+    
+    
+
+    <!--------------- Chart Canvas --------------->
+    <div class="chart_div">
+        <canvas id="myChart"></canvas>
+    </div>
+
+
+    <!---------------------------- SCRIPT  ---------------------------->
+    <script>
+
+        const ctx = document.getElementById('myChart');
+        xvalues = {{x|safe}}
+        yvalues = {{y|safe}}
+        // xaxis_label = {{x1 | safe}}
+        // yaxis_label = {{y1 | safe}}
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+        
+                labels: xvalues,
+                datasets: [
+                {
+                label: 'Average USD value',
+                data: yvalues,
+                borderWidth: 2,
+                borderColor: 'rgba(0,0,0)'
+                }
+                ]
+            },
+            options: {
+                scales: {
+                y: {
+                    beginAtZero: 0,
+                    title: {
+                        text: "USD rate",
+                        display: true
+                    }
+                },
+                x: {
+                    title:{
+                        // text: xlabel,
+                        display: true
+                    }
+                }
+                }
+                
+            }
+        });</script>
+    <!-- <script src="../static/charts.js"></script> -->
+{% endblock content %}
